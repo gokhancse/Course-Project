@@ -1,0 +1,50 @@
+﻿@model List<Gokhan_Selale_Project.Models.Kurslar>
+@{
+    ViewBag.Title = "KursListele";
+}
+
+<h2>Tüm Kurslar</h2>
+
+<div class="row">
+    <div class="col-md-9">
+        <br />
+        <input id="ekle" type="submit" value="Kurs Ekle" onclick="location.href='@Url.Action("KursEkle","Home")'" />
+        <br />
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("KursaKaydet","Home",new { id = item.KursID })">
+                <div style="border-radius:10px; background-color:#d2ebf7;  padding:10px; margin:5px">
+                    <h3>Kurs Adı: @item.KursAd</h3>
+                    <strong>@item.Baslik</strong>
+                    <br /><br />
+
+
+                    @Html.ActionLink("Düzenle", "KursGuncelle", new { id = item.KursID }) |
+                    @Html.ActionLink("Sil", "KursSil", new { id = item.KursID }, new { onclick = "return confirm('Kursu silme istediğinizden emin misiniz ?');" }) |
+                    @Html.ActionLink("Grafik Gösterimi İçin Tıklayın", "Chart", new { id = item.KursID })
+
+                </div>
+            </a>
+        }
+
+    </div>
+    <div class="col-md-3">
+        @Html.ActionLink("Kurs Kayıtlarını Düzenlemek İçin Tıklayın","KursKayitlari","Home")
+</div>
+</div>
+
+
+
+
+@*<script>
+    $(document).ready(function () {
+
+        $("#button1").click(function () {
+            $("#div1").load("/KursListele?handler=Partial");
+        });
+
+    });
+</script>
+<button type="button" id="button1">Load Partial View</button>
+
+<div id="div1"></div>*@

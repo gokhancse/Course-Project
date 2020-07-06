@@ -1,0 +1,23 @@
+﻿@model List<Gokhan_Selale_Project.Models.KursKayitlar>
+@{
+    ViewBag.Title = "Chart";
+}
+
+<br />
+<br />
+
+@using (Html.BeginForm("Chart", "Home"))
+{
+    string str = ViewBag.KursIsmi;
+    int id = ViewBag.KursId;
+    @Html.Label("Grafiği Gösterilecek Kursun Adı:  " + str);
+    <br />
+    @Html.DropDownList("Tarihler", (IEnumerable<SelectListItem>)ViewBag.Kurslar, "Tarih Seçiniz")
+    @Html.Hidden("name", id)
+    <input type="submit" name="submit" value="Göster" />
+    <br />
+}
+
+<div style="width:500px;height:500px;">
+    <img src="@Url.Action("Chart","Home")" />
+</div>

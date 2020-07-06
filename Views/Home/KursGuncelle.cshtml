@@ -1,0 +1,22 @@
+﻿@model Gokhan_Selale_Project.Models.Kurslar
+
+<!DOCTYPE html>
+
+<div>
+    @using (Html.BeginForm("KursGuncelle", "Home"))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(m => m.KursID)
+
+        @Html.LabelFor(m => m.Baslik)
+        @Html.TextBoxFor(m => m.Baslik)
+
+        @Html.LabelFor(m => m.KursAd)
+        @Html.TextBoxFor(m => m.KursAd)
+
+        <button type="submit">Güncelle</button>
+    }
+</div>
+
+

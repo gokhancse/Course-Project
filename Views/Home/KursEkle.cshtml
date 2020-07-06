@@ -1,0 +1,30 @@
+﻿@model Gokhan_Selale_Project.Models.Kurslar
+
+
+@*@{
+    using (Html.BeginForm("KursEkle", "Home", FormMethod.Post))
+    {
+        <input type="text" value="" name="KursAd" />
+        <input type="text" value="" name="Baslik" />
+        <input id="Ekle" type="submit" value="Ekle" />
+    }
+}*@
+
+        @using (Html.BeginForm("KursEkle", "Home"))
+        {
+            @Html.AntiForgeryToken()
+           <br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Baslik)</td>
+                    <td>  @Html.TextBoxFor(m => m.KursAd)</td>
+                </tr>
+                <tr>
+                    <td> @Html.LabelFor(m => m.KursAd)</td>
+                    <td>@Html.TextBoxFor(m => m.Baslik)</td>
+                </tr>
+                <tr>
+                    <td> <button type="submit">Ekle</button></td>
+                </tr>
+            </table>
+        }
